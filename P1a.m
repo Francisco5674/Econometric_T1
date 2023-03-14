@@ -7,7 +7,7 @@ clc;
 data = readtable("data_pregunta1.csv");
 
 % building x and y matrix
-x = [data(:,18:22),data(:,25)];
+x = [data(:,18:22)];
 names = x.Properties.VariableNames;
 names = [names, "cons"];
 y = data(:,24);
