@@ -2,7 +2,6 @@
 * a...
 
 * b
-cd "C:\Users\franc\OneDrive\Escritorio\registros UC\Econometric_T1"
 * getting data
 clear
 
