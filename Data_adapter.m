@@ -1,4 +1,4 @@
-%% Adapting data to cmclogit in stata
+%% Adapting data to cmclogit in stata P1
 cd("C:\Users\franc\OneDrive\Escritorio\registros UC\Econometric_T1");
 clear;
 clc;
@@ -55,4 +55,29 @@ table_adapted.Properties.VariableNames = ["mrun" "distancia" ...
     "es_mujer" "prioritario" "alto_rendimiento" "tipo" "alt"]
 
 writetable(table_adapted,"data_p1_adapted.csv")
+
+%% Adapting data P3
+Info = readmatrix("data_P3.csv");
+
+%%
+data_adapted = [];
+for bus = 0:1
+    for cash = 0:1
+        for week = 0:312
+                record = Info(Info(:,1)==cash & Info(:,2)==bus & ...
+                    Info(:,3)==week,:);
+                disp(record)
+                crimes = record(:,4);
+                crimes = sum(sum(crimes));
+                disp(crimes)
+                data_adapted = [data_adapted;...
+                    cash bus week crimes];
+        end
+    end
+end
+
+%%
+table_adapted = array2table(data_adapted);
+table_adapted.Properties.VariableNames = ["cash" "bus" "week" "crimes"];
+writetable(table_adapted,"data_p3_adapted.csv");
 
