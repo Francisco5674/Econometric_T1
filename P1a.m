@@ -18,7 +18,11 @@ y = table2array(y);
 
 %% Newston Raphson procedure
 
-beta = NR(x,y,10^-7);
+[H,beta] = NR(x,y,10^-7);
 beta_info = array2table(beta);
+vcmatrix = array2table(-inv(H)/size(x,1));
+vcmatrix.Properties.VariableNames = names;
+vcmatrix.Properties.RowNames = names;
 beta_info.Properties.RowNames = names;
 disp(beta_info);
+disp(vcmatrix);
