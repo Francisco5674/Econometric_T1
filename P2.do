@@ -14,8 +14,13 @@ replace y1 = 0 if decision_type=="No Change"
 probit y1 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
 emp_sq ad_sq
 
+* Average of marginal effects
 margins, dydx(complaints firm_age emp_size ad_spending chicago comp_sq ///
 age_sq emp_sq ad_sq)
+
+* Marginal effect in the average
+margins, dydx(complaints firm_age emp_size ad_spending chicago comp_sq ///
+age_sq emp_sq ad_sq) atmeans
 
 * c
 
@@ -52,7 +57,7 @@ emp_sq ad_sq comp_chicago age_chicago comp_ad age_ad comp_emp age_emp
 
 mlogit y2 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
 emp_sq ad_sq comp_chicago age_chicago comp_ad age_ad comp_emp age_emp ///
-ad_chicago comp_ad_chicago 
+ad_chicago comp_ad_chicago age_ad_chicago
 
 * e
 * probit of table 7

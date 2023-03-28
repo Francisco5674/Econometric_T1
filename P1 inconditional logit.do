@@ -3,6 +3,8 @@
 use "data_pregunta1.dta"
 logit municipal cod_nivel prioridad_hermano es_mujer prioritario ///
  alto_rendimiento
+ 
+vce 
 
 * b
 margins, dydx(cod_nivel prioridad_hermano es_mujer prioritario alto_rendimiento)

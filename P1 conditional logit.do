@@ -8,7 +8,10 @@ use "data_p1_adapted.dta"
 cmset mrun tipo
 cmclogit alt distancia p_prioritario simce_let simce_mat
 
-margins dydx(distancia p_prioritario simce_let simce_mat)
+margins, dydx(distancia p_prioritario simce_let simce_mat)
 * f
 cmclogit alt distancia p_prioritario simce_let simce_mat, ///
 casevars(cod_nivel prioridad_h es_mujer prioritario alto_rendimiento)
+
+margins, dydx(distancia p_prioritario simce_let simce_mat ///
+cod_nivel prioridad_h es_mujer prioritario alto_rendimiento)

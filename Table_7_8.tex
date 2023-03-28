@@ -1,0 +1,44 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{2}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+            &\multicolumn{1}{c}{drop\_name}&\multicolumn{1}{c}{multiple\_names}\\
+\hline
+main        &                     &                     \\
+complaints  &       0.212\sym{***}&       0.337\sym{***}\\
+            &      (6.91)         &      (9.69)         \\
+[1em]
+firm\_age    &    -0.00795         &     0.00427         \\
+            &     (-0.33)         &      (0.19)         \\
+[1em]
+emp\_size    &     0.00848         &      0.0141\sym{*}  \\
+            &      (1.65)         &      (2.51)         \\
+[1em]
+ad\_spending &   0.0000250\sym{*}  &   0.0000362\sym{***}\\
+            &      (2.19)         &      (3.36)         \\
+[1em]
+chicago     &       0.323\sym{***}&       0.388\sym{***}\\
+            &      (3.45)         &      (4.39)         \\
+[1em]
+comp\_sq     &    -0.00482\sym{***}&    -0.00694\sym{***}\\
+            &     (-5.05)         &     (-6.62)         \\
+[1em]
+age\_sq      &    0.000392         &  -0.0000636         \\
+            &      (0.46)         &     (-0.08)         \\
+[1em]
+emp\_sq      &  -0.0000416         &  -0.0000897         \\
+            &     (-1.48)         &     (-1.67)         \\
+[1em]
+ad\_sq       &   -0.000465         &   -0.000661\sym{**} \\
+            &     (-1.74)         &     (-2.59)         \\
+[1em]
+\_cons      &      -1.881\sym{***}&      -1.922\sym{***}\\
+            &    (-13.22)         &    (-14.19)         \\
+\hline
+\(N\)       &        2293         &        2293         \\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}
