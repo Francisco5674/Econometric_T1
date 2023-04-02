@@ -11,15 +11,15 @@ generate y1 = 1
 replace y1 = 0 if decision_type=="No Change"
 
 * probit table 5
-probit y1 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
+probit y1 complaints firm_age emp_size ad_spend_k chicago comp_sq age_sq ///
 emp_sq ad_sq
 
 * Average of marginal effects
-margins, dydx(complaints firm_age emp_size ad_spending chicago comp_sq ///
+margins, dydx(complaints firm_age emp_size ad_spend_k chicago comp_sq ///
 age_sq emp_sq ad_sq)
 
 * Marginal effect in the average
-margins, dydx(complaints firm_age emp_size ad_spending chicago comp_sq ///
+margins, dydx(complaints firm_age emp_size ad_spend_k chicago comp_sq ///
 age_sq emp_sq ad_sq) atmeans
 
 * c
@@ -29,47 +29,47 @@ replace y2 = 1 if decision_type=="Name Change"
 replace y2 = 2 if decision_type=="Exit Market"
 
 * probit table 6
-mprobit y2 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
+mprobit y2 complaints firm_age emp_size ad_spend_k chicago comp_sq age_sq ///
 emp_sq ad_sq
 
-mprobit y2 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
+mprobit y2 complaints firm_age emp_size ad_spend_k chicago comp_sq age_sq ///
 emp_sq ad_sq comp_chicago age_chicago comp_ad age_ad comp_emp age_emp
 
-mprobit y2 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
+mprobit y2 complaints firm_age emp_size ad_spend_k chicago comp_sq age_sq ///
 emp_sq ad_sq comp_chicago age_chicago comp_ad age_ad comp_emp age_emp ///
 ad_chicago comp_ad_chicago age_ad_chicago
 
 * d
 * logit of table 5
-logit y1 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
+logit y1 complaints firm_age emp_size ad_spend_k chicago comp_sq age_sq ///
 emp_sq ad_sq
 
-margins, dydx(complaints firm_age emp_size ad_spending chicago comp_sq ///
+margins, dydx(complaints firm_age emp_size ad_spend_k chicago comp_sq ///
 age_sq emp_sq ad_sq)
 
 * logit of table 6
 
-mlogit y2 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
+mlogit y2 complaints firm_age emp_size ad_spend_k chicago comp_sq age_sq ///
 emp_sq ad_sq
 
-mlogit y2 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
+mlogit y2 complaints firm_age emp_size ad_spend_k chicago comp_sq age_sq ///
 emp_sq ad_sq comp_chicago age_chicago comp_ad age_ad comp_emp age_emp
 
-mlogit y2 complaints firm_age emp_size ad_spending chicago comp_sq age_sq ///
+mlogit y2 complaints firm_age emp_size ad_spend_k chicago comp_sq age_sq ///
 emp_sq ad_sq comp_chicago age_chicago comp_ad age_ad comp_emp age_emp ///
 ad_chicago comp_ad_chicago age_ad_chicago
 
 * e
 * probit of table 7
-probit drop_name complaints firm_age emp_size ad_spending chicago comp_sq ///
+probit drop_name complaints firm_age emp_size ad_spend_k chicago comp_sq ///
 age_sq emp_sq ad_sq
 
-margins, dydx(complaints firm_age emp_size ad_spending chicago comp_sq ///
+margins, dydx(complaints firm_age emp_size ad_spend_k chicago comp_sq ///
 age_sq emp_sq ad_sq)
 
 * probit of table 8
-probit multiple_names complaints firm_age emp_size ad_spending chicago comp_sq ///
+probit multiple_names complaints firm_age emp_size ad_spend_k chicago comp_sq ///
 age_sq emp_sq ad_sq
 
-margins, dydx(complaints firm_age emp_size ad_spending chicago comp_sq ///
+margins, dydx(complaints firm_age emp_size ad_spend_k chicago comp_sq ///
 age_sq emp_sq ad_sq)

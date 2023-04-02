@@ -81,3 +81,36 @@ table_adapted = array2table(data_adapted);
 table_adapted.Properties.VariableNames = ["cash" "bus" "week" "crimes"];
 writetable(table_adapted,"data_p3_adapted.csv");
 
+%% Re adapting data P3
+data_preadapt = readmatrix("data_p3_adapted.csv");
+key_my = readmatrix("MYK.xlsx");
+data_preadapt = [data_preadapt (1:size(data_preadapt,1))'];
+
+controls = key_my(:, [3, 4]);
+%%
+control = [];
+for i = 1:313
+    code = strcat(num2str(controls(i,1)));
+    code = str2num(code);
+    control = [control; code];
+    data_preadapt(data_preadapt(:,3) == (i-1), 5) = code;
+end
+
+names = ["cash" "bus" "week" "crimes" "m"];
+for i=1:12
+    data_preadapt = [data_preadapt, (data_preadapt(:,5) == i)];
+    names = [names, strcat("control", num2str(i))]
+end
+
+%%
+data_p3_adapted_v1 = array2table(data_preadapt);
+data_p3_adapted_v1.Properties.VariableNames = names;
+writetable(data_p3_adapted_v1,"data_p3_adapted_v1.csv");
+
+%%
+data_p3_nocash_bus = data_preadapt(data_preadapt(:,1) == 0,:);
+data_p3_nocash_bus = data_p3_nocash_bus(data_p3_nocash_bus(:,2) == 1,:);
+
+table_p3_nocash_bus = array2table(data_p3_nocash_bus);
+table_p3_nocash_bus.Properties.VariableNames = names;
+writetable(table_p3_nocash_bus,"data_p3_nocash_bus.csv");

@@ -1,16 +1,42 @@
 ** Question 3 
 * getting data
 clear
-use "panel_muni_week.dta"
+use "data_p3_adapted_v1.dta"
 
 * a
 generate trans = 0
-replace trans = 1 if week > 36
-replace trans = 0 if week > 112
+replace trans = 1 if week > 41
+replace trans = 0 if week > 109
 
 generate pos = 0
-replace pos = 1 if week > 111
+replace pos = 1 if week > 109
 
-egen id = group(comuna_id bus cash)
-xtset id week
-arima crime trans pos
+
+sum crimes if cash == 0 & bus == 1 & trans == 0 & pos == 0
+
+gen crimes_av1 = crimes/r(mean)
+
+global controls control*
+
+reg crimes_av1 pos trans if cash == 0 & bus == 1
+
+reg crimes_av1 pos trans $controls if cash == 0 & bus == 1
+
+sum crimes if cash == 1 & bus == 1 & trans == 0 & pos == 0
+
+gen crimes_av2 = crimes/r(mean)
+
+reg crimes_av2 pos trans if cash == 1 & bus == 1
+
+* b 
+
+poisson crimes pos trans if cash == 0 & bus == 1
+
+poisson crimes pos trans if cash == 1 & bus == 1
+
+nbreg crimes pos trans if cash == 0 & bus == 1
+
+nbreg crimes pos trans if cash == 1 & bus == 1
+
+* c
+
