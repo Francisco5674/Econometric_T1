@@ -102,17 +102,7 @@ for i=1:12
     names = [names, strcat("control", num2str(i))]
 end
 
-names = [names, "street"];
-control_crimes_street = data_preadapt(data_preadapt(:,2)==0,[1,3,4]);
-data_preadapt = data_preadapt(data_preadapt(:,2)==1,:);
-
-data_preadapt = [data_preadapt, (1:626)'];
-for i = 1:626
-    cash = control_crimes_street(i,1);
-    week = control_crimes_street(i,2);
-    data_preadapt(data_preadapt(:,1) == cash & ...
-        data_preadapt(:,3) == week,18) = control_crimes_street(i,3);
-end
+control_crimes_street = data_preadapt((data_preadapt(:,2)==0),)
 
 %%
 data_p3_adapted_v1 = array2table(data_preadapt);
